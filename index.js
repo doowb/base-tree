@@ -9,6 +9,29 @@
 
 var extend = require('extend-shallow');
 
+/**
+ * Creates a `.tree` method on `app` that will recursively
+ * generate a tree of nodes specified by the plural option passed in.
+ *
+ * ```js
+ * var app = new Base();
+ * app.use(tree({plural: 'children'}));
+ *
+ * app.children = {};
+ * app.children.one = new Base();
+ * app.children.two = new Base();
+ * app.children.three = new Base();
+ *
+ * console.log(app.tree());
+ * console.log(archy(app.tree()));
+ * ```
+ *
+ * @param  {Object} `options` Options to use in `.tree` method
+ * @return {Function} plugin
+ * @api true
+ * @name  tree
+ */
+
 module.exports = function(options) {
   options = options || {};
   return function fn(app) {
@@ -50,6 +73,15 @@ module.exports = function(options) {
   };
 };
 
+/**
+ * Figure out a label to add for a node in the tree.
+ *
+ * @param  {Object} `app` Current node/app being iterated over
+ * @param  {Object} `options` Pass `getLabel` on options to handle yourself.
+ * @return {String} label to be shown
+ * @api public
+ */
+
 function getLabel(app, options) {
   if (typeof options.getLabel === 'function') {
     return options.getLabel(app, options);
@@ -59,6 +91,15 @@ function getLabel(app, options) {
   if (typeof app === 'string') return app;
   return app.full_name || app.nickname || app.name;
 }
+
+/**
+ * Additional data that should be added to a node
+ *
+ * @param  {Object} `app` Current node/app being iterated over
+ * @param  {Object} `options` Pass `getData` on options to handle yourself.
+ * @return {Object} data object to add to node
+ * @api public
+ */
 
 function getData(app, options) {
   if (typeof options.getData === 'function') {
