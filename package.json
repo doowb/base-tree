@@ -19,8 +19,12 @@
   "scripts": {
     "test": "mocha"
   },
-  "dependencies": {},
+  "dependencies": {
+    "extend-shallow": "^2.0.1"
+  },
   "devDependencies": {
+    "archy": "^1.0.0",
+    "base-methods": "^0.4.1",
     "mocha": "*",
     "should": "*"
   },
