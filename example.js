@@ -8,7 +8,7 @@ function App(name) {
   Base.call(this);
   this.name = name;
   this.updaters = {};
-  this.use(tree({plural: 'updaters'}));
+  this.use(tree({name: 'updaters'}));
 }
 
 Base.extend(App);
