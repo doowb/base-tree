@@ -1,6 +1,6 @@
 # base-tree [![NPM version](https://badge.fury.io/js/base-tree.svg)](http://badge.fury.io/js/base-tree)
 
-> Create a tree hierarchy from nested base applications.
+> Add a tree method to generate a hierarchical tree structure representing nested applications and child objects.
 
 ## Install
 
