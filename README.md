@@ -1,4 +1,4 @@
-# base-tree [![NPM version](https://badge.fury.io/js/base-tree.svg)](http://badge.fury.io/js/base-tree)
+# base-tree [![NPM version](https://badge.fury.io/js/base-tree.svg)](http://badge.fury.io/js/base-tree)  [![Build Status](https://travis-ci.org/doowb/base-tree.svg)](https://travis-ci.org/doowb/base-tree)
 
 > Add a tree method to generate a hierarchical tree structure representing nested applications and child objects.
 
