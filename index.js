@@ -28,6 +28,7 @@ var extend = require('extend-shallow');
  *
  * @param  {Object} `options` Options to use in `.tree` method
  * @param  {String} `options.name` Name of the collection object to look for child nodes.
+ * @param  {String} `options.method` Optional method name defined on the `app`. Defaults to `tree`.
  * @param  {Function} `options.tree` Optional `tree` function to use to generate the node or tree of nodes for the current app. Takes `app` and `options` as parameters.
  * @param  {Function} `options.getLabel` Get a label for the node being built. Takes `app` and `options` as parameters.
  * @param  {Function} `options.getMetadata` Get a metadata object for the node being built. Takes `app` and `options` as parameters.
@@ -38,16 +39,18 @@ var extend = require('extend-shallow');
 
 module.exports = function(options) {
   options = options || {};
+  options.method = options.method || 'tree';
+
   return function fn(app) {
 
     // tree is already registered on this `app`
-    if (typeof app.tree !== 'undefined') {
+    if (typeof app[options.method] !== 'undefined') {
       return fn;
     }
 
     // create a `tree` method that will build up a tree
     // of nodes
-    app.define('tree', function(opts) {
+    app.define(options.method, function(opts) {
       opts = extend({}, options, opts);
       if (typeof opts.tree === 'function') {
         return opts.tree.call(this, this, opts);
@@ -90,8 +93,8 @@ function tree(app, options) {
   var nodes = [];
   for (var key in children) {
     var child = children[key];
-    if (typeof child.tree === 'function') {
-      nodes.push(child.tree(opts));
+    if (typeof child[opts.method] === 'function') {
+      nodes.push(child[opts.method](opts));
     } else {
       nodes.push(tree(child, opts));
     }
