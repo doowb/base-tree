@@ -18,7 +18,7 @@ var tree = require('base-tree');
 
 ## API
 
-### [.tree](index.js#L39)
+### [.tree](index.js#L40)
 
 Creates a `.tree` method on `app` that will recursively generate a tree of nodes specified by the name option passed in.
 
@@ -26,6 +26,7 @@ Creates a `.tree` method on `app` that will recursively generate a tree of nodes
 
 * `options` **{Object}**: Options to use in `.tree` method
 * `options.name` **{String}**: Name of the collection object to look for child nodes.
+* `options.method` **{String}**: Optional method name defined on the `app`. Defaults to `tree`.
 * `options.tree` **{Function}**: Optional `tree` function to use to generate the node or tree of nodes for the current app. Takes `app` and `options` as parameters.
 * `options.getLabel` **{Function}**: Get a label for the node being built. Takes `app` and `options` as parameters.
 * `options.getMetadata` **{Function}**: Get a metadata object for the node being built. Takes `app` and `options` as parameters.
@@ -46,7 +47,7 @@ console.log(app.tree());
 console.log(archy(app.tree()));
 ```
 
-### [options.tree](index.js#L75)
+### [options.tree](index.js#L78)
 
 Default tree building function. Gets the label and metadata properties for the current `app` and recursively generates the child nodes and child trees if possible.
 
@@ -58,7 +59,7 @@ This method may be overriden by passing a `.tree` function on options.
 * `options` **{Object}**: Options used to control how the `label` and `metadata` properties are retreived.
 * `returns` **{Object}**: Generated node containing `label`, `metadata`, and `nodes` properties for current segment of a tree.
 
-### [options.getLabel](index.js#L116)
+### [options.getLabel](index.js#L119)
 
 Figure out a label to add for a node in the tree.
 
@@ -68,7 +69,7 @@ Figure out a label to add for a node in the tree.
 * `options` **{Object}**: Pass `getLabel` on options to handle yourself.
 * `returns` **{String}**: label to be shown
 
-### [options.getMetadata](index.js#L133)
+### [options.getMetadata](index.js#L136)
 
 Additional metadata that should be added to a node
 
