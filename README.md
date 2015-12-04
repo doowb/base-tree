@@ -28,7 +28,7 @@ Creates a `.tree` method on `app` that will recursively generate a tree of nodes
 * `options.name` **{String}**: Name of the collection object to look for child nodes.
 * `options.tree` **{Function}**: Optional `tree` function to use to generate the node or tree of nodes for the current app. Takes `app` and `options` as parameters.
 * `options.getLabel` **{Function}**: Get a label for the node being built. Takes `app` and `options` as parameters.
-* `options.getData` **{Function}**: Get a data object for the node being built. Takes `app` and `options` as parameters.
+* `options.getMetadata` **{Function}**: Get a metadata object for the node being built. Takes `app` and `options` as parameters.
 * `returns` **{Function}**: plugin
 
 **Example**
@@ -48,15 +48,15 @@ console.log(archy(app.tree()));
 
 ### [options.tree](index.js#L75)
 
-Default tree building function. Gets the label and data properties for the current `app` and recursively generates the child nodes and child trees if possible.
+Default tree building function. Gets the label and metadata properties for the current `app` and recursively generates the child nodes and child trees if possible.
 
 This method may be overriden by passing a `.tree` function on options.
 
 **Params**
 
 * `app` **{Object}**: Current application to build a node and tree from.
-* `options` **{Object}**: Options used to control how the `label` and `data` properties are retreived.
-* `returns` **{Object}**: Generated node containing `label`, `data`, and `nodes` properties for current segment of a tree.
+* `options` **{Object}**: Options used to control how the `label` and `metadata` properties are retreived.
+* `returns` **{Object}**: Generated node containing `label`, `metadata`, and `nodes` properties for current segment of a tree.
 
 ### [options.getLabel](index.js#L116)
 
@@ -68,15 +68,15 @@ Figure out a label to add for a node in the tree.
 * `options` **{Object}**: Pass `getLabel` on options to handle yourself.
 * `returns` **{String}**: label to be shown
 
-### [options.getData](index.js#L133)
+### [options.getMetadata](index.js#L133)
 
-Additional data that should be added to a node
+Additional metadata that should be added to a node
 
 **Params**
 
 * `app` **{Object}**: Current node/app being iterated over
-* `options` **{Object}**: Pass `getData` on options to handle yourself.
-* `returns` **{Object}**: data object to add to node
+* `options` **{Object}**: Pass `getMetadata` on options to handle yourself.
+* `returns` **{Object}**: metadata object to add to node
 
 ## Running Example
 
