@@ -91,7 +91,7 @@ $ node example.js
 
 The example will output the raw object and a formatted tree structure using [archy](https://github.com/substack/node-archy)
 
-[![image](https://cloud.githubusercontent.com/assets/995160/11600429/8648c144-9a9a-11e5-9f3e-2fd9955d87ec.png)](https://www.npmjs.com/)
+[![image](https://cloud.githubusercontent.com/assets/995160/11600862/6d97b04e-9a9d-11e5-983d-57b47cd13c75.png)](https://www.npmjs.com/)
 
 ## Related projects
 
