@@ -42,19 +42,19 @@ describe('base-tree', function() {
   it('should generate a tree with no children using name', function() {
     var app = new Base({name: 'app'});
     app.use(tree());
-    assert.deepEqual(app.tree(), {label: 'app', data: {}});
+    assert.deepEqual(app.tree(), {label: 'app', metadata: {}});
   });
 
   it('should generate a tree with no children using full_name', function() {
     var app = new Base({full_name: 'app'});
     app.use(tree());
-    assert.deepEqual(app.tree(), {label: 'app', data: {}});
+    assert.deepEqual(app.tree(), {label: 'app', metadata: {}});
   });
 
   it('should generate a tree with no children using nickname', function() {
     var app = new Base({nickname: 'app'});
     app.use(tree());
-    assert.deepEqual(app.tree(), {label: 'app', data: {}});
+    assert.deepEqual(app.tree(), {label: 'app', metadata: {}});
   });
 
   it('should generate a tree with no children using getLabel', function() {
@@ -64,17 +64,17 @@ describe('base-tree', function() {
         return 'app';
       }
     }));
-    assert.deepEqual(app.tree(), {label: 'app', data: {}});
+    assert.deepEqual(app.tree(), {label: 'app', metadata: {}});
   });
 
-  it('should generate a tree with no children using getData', function() {
+  it('should generate a tree with no children using getMetadata', function() {
     var app = new Base({name: 'app'});
     app.use(tree({
-      getData: function() {
+      getMetadata: function() {
         return {type: 'app'};
       }
     }));
-    assert.deepEqual(app.tree(), {label: 'app', data: {type: 'app'}});
+    assert.deepEqual(app.tree(), {label: 'app', metadata: {type: 'app'}});
   });
 
   it('should generate a tree with children on `.nodes`', function() {
@@ -88,11 +88,11 @@ describe('base-tree', function() {
 
     assert.deepEqual(app.tree(), {
       label: 'app',
-      data: {},
+      metadata: {},
       nodes: [
-        {label: 'one', data: {}},
-        {label: 'two', data: {}},
-        {label: 'three', data: {}}
+        {label: 'one', metadata: {}},
+        {label: 'two', metadata: {}},
+        {label: 'three', metadata: {}}
       ]
     });
   });
@@ -108,11 +108,11 @@ describe('base-tree', function() {
 
     assert.deepEqual(app.tree(), {
       label: 'app',
-      data: {},
+      metadata: {},
       nodes: [
-        {label: 'one', data: {}},
-        {label: 'two', data: {}},
-        {label: 'three', data: {}}
+        {label: 'one', metadata: {}},
+        {label: 'two', metadata: {}},
+        {label: 'three', metadata: {}}
       ]
     });
   });
@@ -154,33 +154,33 @@ describe('base-tree', function() {
 
     assert.deepEqual(app.tree(), {
       label: 'app',
-      data: {},
+      metadata: {},
       nodes: [
         {
           label: 'one',
-          data: {},
+          metadata: {},
           nodes: [
-            {label: 'one-a', data: {}},
-            {label: 'one-b', data: {}},
-            {label: 'one-c', data: {}}
+            {label: 'one-a', metadata: {}},
+            {label: 'one-b', metadata: {}},
+            {label: 'one-c', metadata: {}}
           ]
         },
         {
           label: 'two',
-          data: {},
+          metadata: {},
           nodes: [
-            {label: 'two-a', data: {}},
-            {label: 'two-b', data: {}},
-            {label: 'two-c', data: {}}
+            {label: 'two-a', metadata: {}},
+            {label: 'two-b', metadata: {}},
+            {label: 'two-c', metadata: {}}
           ]
         },
         {
           label: 'three',
-          data: {},
+          metadata: {},
           nodes: [
-            {label: 'three-a', data: {}},
-            {label: 'three-b', data: {}},
-            {label: 'three-c', data: {}}
+            {label: 'three-a', metadata: {}},
+            {label: 'three-b', metadata: {}},
+            {label: 'three-c', metadata: {}}
           ]
         },
       ]
@@ -224,33 +224,33 @@ describe('base-tree', function() {
 
     assert.deepEqual(app.tree(), {
       label: 'app',
-      data: {},
+      metadata: {},
       nodes: [
         {
           label: 'one',
-          data: {},
+          metadata: {},
           nodes: [
-            {label: 'one-a', data: {}},
-            {label: 'one-b', data: {}},
-            {label: 'one-c', data: {}}
+            {label: 'one-a', metadata: {}},
+            {label: 'one-b', metadata: {}},
+            {label: 'one-c', metadata: {}}
           ]
         },
         {
           label: 'two',
-          data: {},
+          metadata: {},
           nodes: [
-            {label: 'two-a', data: {}},
-            {label: 'two-b', data: {}},
-            {label: 'two-c', data: {}}
+            {label: 'two-a', metadata: {}},
+            {label: 'two-b', metadata: {}},
+            {label: 'two-c', metadata: {}}
           ]
         },
         {
           label: 'three',
-          data: {},
+          metadata: {},
           nodes: [
-            {label: 'three-a', data: {}},
-            {label: 'three-b', data: {}},
-            {label: 'three-c', data: {}}
+            {label: 'three-a', metadata: {}},
+            {label: 'three-b', metadata: {}},
+            {label: 'three-c', metadata: {}}
           ]
         },
       ]
@@ -298,33 +298,33 @@ describe('base-tree', function() {
 
     assert.deepEqual(app.tree(), {
       label: 'app',
-      data: {},
+      metadata: {},
       nodes: [
         {
           label: 'one',
-          data: {},
+          metadata: {},
           nodes: [
-            {label: 'one-a', data: {}},
-            {label: 'one-b', data: {}},
-            {label: 'one-c', data: {}}
+            {label: 'one-a', metadata: {}},
+            {label: 'one-b', metadata: {}},
+            {label: 'one-c', metadata: {}}
           ]
         },
         {
           label: 'two',
-          data: {},
+          metadata: {},
           nodes: [
-            {label: 'two-a', data: {}},
-            {label: 'two-b', data: {}},
-            {label: 'two-c', data: {}}
+            {label: 'two-a', metadata: {}},
+            {label: 'two-b', metadata: {}},
+            {label: 'two-c', metadata: {}}
           ]
         },
         {
           label: 'three',
-          data: {},
+          metadata: {},
           nodes: [
-            {label: 'three-a', data: {}},
-            {label: 'three-b', data: {}},
-            {label: 'three-c', data: {}}
+            {label: 'three-a', metadata: {}},
+            {label: 'three-b', metadata: {}},
+            {label: 'three-c', metadata: {}}
           ]
         },
       ]
