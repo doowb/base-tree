@@ -39,6 +39,14 @@ describe('base-tree', function() {
     });
   });
 
+  it('should use a custom method name instead of `.tree`', function() {
+    var app = new Base({name: 'app'});
+    app.use(tree({method: 'hierarchy'}));
+    assert(typeof app.tree === 'undefined');
+    assert(typeof app.hierarchy === 'function');
+    assert.deepEqual(app.hierarchy(), {label: 'app', metadata: {}});
+  });
+
   it('should generate a tree with no children using name', function() {
     var app = new Base({name: 'app'});
     app.use(tree());
