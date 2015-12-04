@@ -24,12 +24,12 @@
   },
   "devDependencies": {
     "archy": "^1.0.0",
-    "base-methods": "^0.4.1",
+    "base-methods": "^0.6.1",
     "gulp": "^3.9.0",
-    "gulp-eslint": "^1.1.0",
-    "gulp-istanbul": "^0.10.2",
-    "gulp-mocha": "^2.1.3",
-    "mocha": "*",
+    "gulp-eslint": "^1.1.1",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-mocha": "^2.2.0",
+    "mocha": "^2.3.4",
     "use": "^1.1.2"
   },
   "keywords": [],
