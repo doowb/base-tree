@@ -1,10 +1,9 @@
-# base-tree [![NPM version](https://badge.fury.io/js/base-tree.svg)](http://badge.fury.io/js/base-tree)  [![Build Status](https://travis-ci.org/doowb/base-tree.svg)](https://travis-ci.org/doowb/base-tree)
+# base-tree [![NPM version](https://img.shields.io/npm/v/base-tree.svg)](https://www.npmjs.com/package/base-tree) [![Build Status](https://img.shields.io/travis/doowb/base-tree.svg)](https://travis-ci.org/doowb/base-tree)
 
 > Add a tree method to generate a hierarchical tree structure representing nested applications and child objects.
 
 ## Install
-
-Install with [npm](https://www.npmjs.com/)
+Install with [npm](https://www.npmjs.com/):
 
 ```sh
 $ npm i base-tree --save
@@ -19,24 +18,26 @@ var tree = require('base-tree');
 ## API
 
 ### [.tree](index.js#L40)
+Creates a `.tree` method on `app` that will recursively generate a tree of nodes specified by the `names` option passed in.
 
-Creates a `.tree` method on `app` that will recursively generate a tree of nodes specified by the name option passed in.
 
 **Params**
 
-* `options` **{Object}**: Options to use in `.tree` method
-* `options.name` **{String}**: Name of the collection object to look for child nodes.
-* `options.method` **{String}**: Optional method name defined on the `app`. Defaults to `tree`.
-* `options.tree` **{Function}**: Optional `tree` function to use to generate the node or tree of nodes for the current app. Takes `app` and `options` as parameters.
-* `options.getLabel` **{Function}**: Get a label for the node being built. Takes `app` and `options` as parameters.
-* `options.getMetadata` **{Function}**: Get a metadata object for the node being built. Takes `app` and `options` as parameters.
-* `returns` **{Function}**: plugin
+* `options` **{Object}**: Options to use in `.tree` method    
+* `options.names` **{String|Array}**: Names of the collection objects to look for child nodes.    
+* `options.method` **{String}**: Optional method names defined on the `app`. Defaults to `tree`.    
+* `options.tree` **{Function}**: Optional `tree` function to use to generate the node or tree of nodes for the current app. Takes `app` and `options` as parameters.    
+* `options.getLabel` **{Function}**: Get a label for the node being built. Takes `app` and `options` as parameters.    
+* `options.getMetadata` **{Function}**: Get a metadata object for the node being built. Takes `app` and `options` as parameters.    
+* `returns` **{Function}**: plugin  
 
 **Example**
 
+
+
 ```js
 var app = new Base();
-app.use(tree({name: 'children'}));
+app.use(tree({names: 'children'}));
 
 app.children = {};
 app.children.one = new Base();
@@ -47,37 +48,45 @@ console.log(app.tree());
 console.log(archy(app.tree()));
 ```
 
-### [options.tree](index.js#L78)
 
+### [options.tree](index.js#L78)
 Default tree building function. Gets the label and metadata properties for the current `app` and recursively generates the child nodes and child trees if possible.
+
 
 This method may be overriden by passing a `.tree` function on options.
 
 **Params**
 
-* `app` **{Object}**: Current application to build a node and tree from.
-* `options` **{Object}**: Options used to control how the `label` and `metadata` properties are retreived.
-* `returns` **{Object}**: Generated node containing `label`, `metadata`, and `nodes` properties for current segment of a tree.
+* `app` **{Object}**: Current application to build a node and tree from.    
+* `options` **{Object}**: Options used to control how the `label` and `metadata` properties are retreived.    
+* `returns` **{Object}**: Generated node containing `label`, `metadata`, and `nodes` properties for current segment of a tree.  
 
-### [options.getLabel](index.js#L119)
+
+
+### [options.getLabel](index.js#L124)
 
 Figure out a label to add for a node in the tree.
 
 **Params**
 
-* `app` **{Object}**: Current node/app being iterated over
-* `options` **{Object}**: Pass `getLabel` on options to handle yourself.
-* `returns` **{String}**: label to be shown
+* `app` **{Object}**: Current node/app being iterated over    
+* `options` **{Object}**: Pass `getLabel` on options to handle yourself.    
+* `returns` **{String}**: label to be shown  
 
-### [options.getMetadata](index.js#L136)
+
+
+### [options.getMetadata](index.js#L141)
 
 Additional metadata that should be added to a node
 
 **Params**
 
-* `app` **{Object}**: Current node/app being iterated over
-* `options` **{Object}**: Pass `getMetadata` on options to handle yourself.
-* `returns` **{Object}**: metadata object to add to node
+* `app` **{Object}**: Current node/app being iterated over    
+* `options` **{Object}**: Pass `getMetadata` on options to handle yourself.    
+* `returns` **{Object}**: metadata object to add to node  
+
+
+
 
 ## Running Example
 
@@ -90,17 +99,15 @@ $ npm install
 $ node example.js
 ```
 
-The example will output the raw object and a formatted tree structure using [archy](https://github.com/substack/node-archy)
+The example will output the raw object and a formatted tree structure using [archy][]
 
-[![image](https://cloud.githubusercontent.com/assets/995160/11600862/6d97b04e-9a9d-11e5-983d-57b47cd13c75.png)](https://www.npmjs.com/)
+![image](https://cloud.githubusercontent.com/assets/995160/11600862/6d97b04e-9a9d-11e5-983d-57b47cd13c75.png)
 
 ## Related projects
-
-* [base-methods](https://www.npmjs.com/package/base-methods): Starter for creating a node.js application with a handful of common methods, like `set`, `get`,… [more](https://www.npmjs.com/package/base-methods) | [homepage](https://github.com/jonschlinkert/base-methods)
+* [base-methods](https://www.npmjs.com/package/base-methods): base-methods is the foundation for creating modular, unit testable and highly pluggable node.js applications, starting… [more](https://www.npmjs.com/package/base-methods) | [homepage](https://github.com/jonschlinkert/base-methods)
 * [use](https://www.npmjs.com/package/use): Easily add plugin support to your node.js application. | [homepage](https://github.com/jonschlinkert/use)
 
 ## Running tests
-
 Install dev dependencies:
 
 ```sh
@@ -108,21 +115,20 @@ $ npm i -d && npm test
 ```
 
 ## Contributing
-
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/doowb/base-tree/issues/new).
 
 ## Author
-
 **Brian Woodward**
 
 + [github/doowb](https://github.com/doowb)
 + [twitter/doowb](http://twitter.com/doowb)
 
 ## License
-
-Copyright © 2015 Brian Woodward
+Copyright © 2016 [Brian Woodward](https://github.com/doowb)
 Released under the MIT license.
 
 ***
 
-_This file was generated by [verb-cli](https://github.com/assemble/verb-cli) on December 04, 2015._
+_This file was generated by [verb](https://github.com/verbose/verb) on January 14, 2016._
+
+[archy]: https://github.com/substack/node-archy
