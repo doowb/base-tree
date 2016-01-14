@@ -107,7 +107,7 @@ describe('base-tree', function() {
 
   it('should generate a tree with children on `.children`', function() {
     var app = new Base({name: 'app'});
-    app.use(tree({name: 'children'}));
+    app.use(tree({names: 'children'}));
     app.children = {
       one: new Base({name: 'one'}),
       two: new Base({name: 'two'}),
@@ -197,7 +197,7 @@ describe('base-tree', function() {
 
   it('should generate a tree with grandchilren on `.children`', function() {
     var app = new Base({name: 'app'});
-    app.use(tree({name: 'children'}));
+    app.use(tree({names: 'children'}));
     app.children = {
       one: new Base({
         name: 'one',
@@ -268,7 +268,7 @@ describe('base-tree', function() {
   it('should generate a tree with grandchilren on `.children` using `use`', function() {
     var app = new Base({name: 'app'});
     app.use(use);
-    app.use(tree({name: 'children'}));
+    app.use(tree({names: 'children'}));
     app.use(function children() {
       this.children = {};
 
