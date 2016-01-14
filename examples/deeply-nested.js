@@ -52,7 +52,7 @@ var nodes = parent.tree({
   getLabel: function(app, options) {
     return app.name;
   },
-  getData: function(app, options) {
+  getMetadata: function(app, options) {
     if (typeof options.getLabel === 'function') {
       if (options.getLabel(app, options).indexOf('child') !== -1) {
         return {
