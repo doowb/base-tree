@@ -2,7 +2,7 @@
 
 var archy = require('archy');
 var Base = require('base-methods');
-var tree = require('./');
+var tree = require('../');
 
 function App(name) {
   Base.call(this);
