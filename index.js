@@ -11,11 +11,11 @@ var extend = require('extend-shallow');
 
 /**
  * Creates a `.tree` method on `app` that will recursively
- * generate a tree of nodes specified by the name option passed in.
+ * generate a tree of nodes specified by the `names` option passed in.
  *
  * ```js
  * var app = new Base();
- * app.use(tree({name: 'children'}));
+ * app.use(tree({names: 'children'}));
  *
  * app.children = {};
  * app.children.one = new Base();
@@ -27,8 +27,8 @@ var extend = require('extend-shallow');
  * ```
  *
  * @param  {Object} `options` Options to use in `.tree` method
- * @param  {String} `options.name` Name of the collection object to look for child nodes.
- * @param  {String} `options.method` Optional method name defined on the `app`. Defaults to `tree`.
+ * @param  {String|Array} `options.names` Names of the collection objects to look for child nodes.
+ * @param  {String} `options.method` Optional method names defined on the `app`. Defaults to `tree`.
  * @param  {Function} `options.tree` Optional `tree` function to use to generate the node or tree of nodes for the current app. Takes `app` and `options` as parameters.
  * @param  {Function} `options.getLabel` Get a label for the node being built. Takes `app` and `options` as parameters.
  * @param  {Function} `options.getMetadata` Get a metadata object for the node being built. Takes `app` and `options` as parameters.
@@ -83,7 +83,7 @@ function tree(app, options) {
   };
 
   // get the names of the children to lookup
-  var names = arrayify(opts.name || ['nodes']);
+  var names = arrayify(opts.names || ['nodes']);
   return names.reduce(function(acc, name) {
     var children = app[name];
     if (typeof children !== 'object') {
