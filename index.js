@@ -82,28 +82,33 @@ function tree(app, options) {
     metadata: getMetadata(app, opts)
   };
 
-  // get the name of the children to lookup
-  var name = opts.name || 'nodes';
-  var children = app[name];
-  if (typeof children !== 'object') {
-    return node;
-  }
-
-  // build a tree for each child node
-  var nodes = [];
-  for (var key in children) {
-    var child = children[key];
-    if (typeof child[opts.method] === 'function') {
-      nodes.push(child[opts.method](opts));
-    } else {
-      nodes.push(tree(child, opts));
+  // get the names of the children to lookup
+  var names = arrayify(opts.name || ['nodes']);
+  return names.reduce(function(acc, name) {
+    var children = app[name];
+    if (typeof children !== 'object') {
+      return node;
     }
-  }
 
-  if (nodes.length) {
-    node.nodes = nodes;
-  }
-  return node;
+    // build a tree for each child node
+    var nodes = [];
+    for (var key in children) {
+      var child = children[key];
+      if (typeof child[opts.method] === 'function') {
+        nodes.push(child[opts.method](opts));
+      } else {
+        var res = tree(child, opts);
+        nodes.push(res);
+      }
+    }
+
+    if (nodes.length) {
+      node.nodes = (node.nodes || []).concat(nodes);
+    }
+    return node;
+  }, node);
+
+
 }
 
 /**
@@ -138,4 +143,9 @@ function getMetadata(app, options) {
     return options.getMetadata(app, options);
   }
   return {};
+}
+
+function arrayify(val) {
+  if (!val) return [];
+  return Array.isArray(val) ? val : [val];
 }
