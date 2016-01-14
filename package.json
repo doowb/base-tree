@@ -23,6 +23,7 @@
     "extend-shallow": "^2.0.1"
   },
   "devDependencies": {
+    "ansi-colors": "^0.1.0",
     "archy": "^1.0.0",
     "base-methods": "^0.6.1",
     "gulp": "^3.9.0",
