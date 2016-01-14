@@ -1,7 +1,7 @@
 {
   "name": "base-tree",
   "description": "Add a tree method to generate a hierarchical tree structure representing nested applications and child objects.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/doowb/base-tree",
   "author": "Brian Woodward (https://github.com/doowb)",
   "repository": "doowb/base-tree",
